@@ -22,7 +22,7 @@ public class Pinger
         HttpMethod method_heroku = new GetMethod("https://pingeropenshift.herokuapp.com/");
         try {
             client.executeMethod(method_openshift);
-            client.executeMethod(method_heroku);
+            // client.executeMethod(method_heroku);
         } catch (IOException e) {
             e.printStackTrace();
         }
