@@ -1,15 +1,15 @@
 package com.personal.website;
 
-import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
+@RequestMapping("/")
 public class MyRestController {
 
-    @RequestMapping(
-            value = "/",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    public MyRestController(){}
+
+    @RequestMapping(method = RequestMethod.GET)
     public String home() {
         return "Hello World!";
     }

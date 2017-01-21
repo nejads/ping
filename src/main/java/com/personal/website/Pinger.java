@@ -38,7 +38,7 @@ public class Pinger
         }
         System.out.println("Pinging Heroku finished successfully. Server: " +
                 method_heroku.getResponseHeader("Server").getValue());
-*/ 
+*/
     }
 
 }
