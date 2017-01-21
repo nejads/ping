@@ -12,20 +12,22 @@ import java.util.Date;
 @Component(value = "pinger")
 public class Pinger
 {
-    @Scheduled(cron="*/5 * * * * ?")
+    @Scheduled(cron="*/20 * * * * ?")
     public void ping()
     {
         System.out.println("Pinging is started. Current time is :: "+ new Date());
 
         HttpClient client = new HttpClient();
-        HttpMethod method = new GetMethod("http://soroush-webbsidan.rhcloud.com/");
+        HttpMethod method_openshift = new GetMethod("http://soroush-webbsidan.rhcloud.com/");
+        HttpMethod method_heroku = new GetMethod("http://soroush-webbsidan.rhcloud.com/");
         try {
-            int i = client.executeMethod(method);
+            client.executeMethod(method_openshift);
+            client.executeMethod(method_heroku);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println("Pinging finished successfully. ResponseBody: " + method.getResponseBodyAsString());
+        System.out.println("Pinging finished successfully. ResponseBody: " + method_openshift.getName());
 
     }
 
