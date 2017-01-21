@@ -1,4 +1,4 @@
-/* package com.personal.website;
+package com.personal.website;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
@@ -12,7 +12,7 @@ import java.util.Date;
 @Component(value = "pinger")
 public class Pinger
 {
-    @Scheduled(cron="20 * * * * ?")
+    @Scheduled(cron="*/20 * * * * ?")
     public void ping()
     {
         System.out.println("Pinging Openshift is started. Current time is :: "+ new Date());
@@ -42,4 +42,3 @@ public class Pinger
     }
 
 }
-*/
