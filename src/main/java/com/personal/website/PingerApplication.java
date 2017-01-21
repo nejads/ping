@@ -19,6 +19,7 @@ public class PingerApplication {
 		return "Hello World!";
 	}
 
+	// web: java -jar target/pinger-0.0.1-SNAPSHOT.jar & python pinger.py
 	public static void main(String[] args) {
 		SpringApplication.run(PingerApplication.class, args);
 	}
