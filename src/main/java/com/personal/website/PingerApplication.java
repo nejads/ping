@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @ComponentScan(basePackageClasses = AppConfig.class)
 @ComponentScan(basePackageClasses = Pinger.class)
+@ComponentScan(basePackageClasses = MyRestController.class)
 @SpringBootApplication
 public class PingerApplication {
 

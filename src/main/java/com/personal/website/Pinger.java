@@ -19,7 +19,7 @@ public class Pinger
 
         HttpClient client = new HttpClient();
         HttpMethod method_openshift = new GetMethod("http://soroush-webbsidan.rhcloud.com/");
-        HttpMethod method_heroku = new GetMethod("http://soroush-webbsidan.rhcloud.com/");
+        HttpMethod method_heroku = new GetMethod("https://pingeropenshift.herokuapp.com/");
         try {
             client.executeMethod(method_openshift);
             client.executeMethod(method_heroku);
@@ -27,7 +27,8 @@ public class Pinger
             e.printStackTrace();
         }
 
-        System.out.println("Pinging finished successfully. ResponseBody: " + method_openshift.getName());
+        System.out.println("Pinging finished successfully. Server: " +
+                method_openshift.getResponseHeader("Server").getValue());
 
     }
 
