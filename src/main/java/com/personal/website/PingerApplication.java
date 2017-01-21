@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
+@EnableAutoConfiguration
 public class PingerApplication {
 
 	public static void main(String[] args) {
