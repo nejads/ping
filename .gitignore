@@ -46,6 +46,9 @@ Temporary Items
 # Gradle:
 .idea/gradle.xml
 .idea/libraries
+pinger.iml
+.idea
+target/
 
 # Mongo Explorer plugin:
 .idea/mongoSettings.xml
