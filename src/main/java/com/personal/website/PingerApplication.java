@@ -9,13 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-//@ComponentScan(basePackageClasses = AppConfig.class)
-//@ComponentScan(basePackageClasses = Pinger.class)
-//@ComponentScan(basePackageClasses = MyRestController.class)
 @SpringBootApplication
 public class PingerApplication {
 
-	// web: java -jar target/pinger-0.0.1-SNAPSHOT.jar & python pinger.py
 	public static void main(String[] args) {
 		SpringApplication.run(PingerApplication.class, args);
 	}
