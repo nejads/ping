@@ -29,7 +29,7 @@ public class Pinger
                 method_openshift.getResponseHeader("Server").getValue());
 
 
-        System.out.println("Pinging Heroku is started. Current time is :: "+ new Date());
+/*        System.out.println("Pinging Heroku is started. Current time is :: "+ new Date());
         HttpMethod method_heroku = new GetMethod("https://pingeropenshift.herokuapp.com/");
         try {
             client.executeMethod(method_heroku);
@@ -38,6 +38,7 @@ public class Pinger
         }
         System.out.println("Pinging Heroku finished successfully. Server: " +
                 method_heroku.getResponseHeader("Server").getValue());
+*/ 
     }
 
 }
