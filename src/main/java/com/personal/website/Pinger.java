@@ -25,7 +25,7 @@ public class Pinger
             e.printStackTrace();
         }
 
-        System.out.println("Pinging finished successfully. ResponseHeader: " + method.getResponseHeaders());
+        System.out.println("Pinging finished successfully. ResponseBody: " + method.getResponseBodyAsString());
 
     }
 
