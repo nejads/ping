@@ -7,16 +7,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 public class MyRestController {
 
-    private final String response = "<html>\n" +
-            "<header><title>This is title</title></header>\n" +
-            "<body>\n" +
-            "Hello world\n" +
-            "</body>\n" +
-            "</html>";
-
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
     public String home() {
-        return response;
+        return "Hello World!";
     }
 
 }
