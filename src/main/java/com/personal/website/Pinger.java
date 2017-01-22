@@ -12,7 +12,7 @@ import java.util.Date;
 @Component(value = "pinger")
 public class Pinger
 {
-    @Scheduled(cron="0 0/30 6-23 * * *")
+    @Scheduled(cron="0 0/15 * * * *")
     public void ping()
     {
         System.out.println("Pinging Openshift is started. Current time is :: "+ new Date());

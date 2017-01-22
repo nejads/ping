@@ -9,7 +9,7 @@ def main():
 
     while True:
         try:
-            print('Pinging')
+            print('Pinging from python')
             requests.get(URL)
             time.sleep(10 * 1)
         except KeyboardInterrupt:
