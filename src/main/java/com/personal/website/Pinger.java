@@ -7,38 +7,33 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
-@Component(value = "pinger")
 public class Pinger
 {
-    @Scheduled(cron="0 0/15 * * * ?")
-    public void ping()
-    {
-        System.out.println("Pinging Openshift is started. Current time is :: "+ new Date());
-
+    public static void ping(String name, String url) {
         HttpClient client = new HttpClient();
-        HttpMethod method_openshift = new GetMethod("http://soroush-webbsidan.rhcloud.com/");
-        try {
-            client.executeMethod(method_openshift);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        System.out.println("Pinging Openshift finished successfully. Server: " +
-                method_openshift.getResponseHeader("Server").getValue());
+        System.out.println("Pinging " + name + " is started. Current time is: "+ new Date());
+        Timer timer = Timer.start();
 
-
-        System.out.println("Pinging Heroku is started. Current time is :: "+ new Date());
-        HttpMethod method_heroku = new GetMethod("https://pingeropenshift.herokuapp.com/");
+        HttpMethod method_heroku = new GetMethod(url);
         try {
             client.executeMethod(method_heroku);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Pinging Heroku finished successfully. Server: " +
-                method_heroku.getResponseHeader("Server").getValue());
 
+        long passedTimeInMs = timer.time();
+        System.out.println("Pinging " + name + " finished successfully. Server name at response: " +
+                method_heroku.getResponseHeader("Server").getValue() + ". Total time elapsed: " +
+                passedTimeInMs + " milliseconds.");
     }
 
 }
