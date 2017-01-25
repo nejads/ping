@@ -1,4 +1,4 @@
-package com.personal.website;
+package com.personal.website.pinger;
 
 
 import java.util.concurrent.TimeUnit;
