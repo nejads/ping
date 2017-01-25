@@ -1,5 +1,8 @@
 package com.personal.website.pinger;
 
+import com.personal.website.config.PingProperties;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -7,10 +10,17 @@ import org.springframework.stereotype.Component;
 import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 @Component(value = "scheduler")
+@EnableConfigurationProperties(PingProperties.class)
 public class Scheduler {
+
+    private static PingProperties properties;
+
+    @Autowired
+    public Scheduler(PingProperties properties) {
+        this.properties = properties;
+    }
 
     @Async
     @Scheduled(fixedDelay = 365 * 24 * 60  * 60 * 1000)
@@ -20,9 +30,9 @@ public class Scheduler {
 
         Task.getTasks().forEach(task -> {
             executorService.scheduleWithFixedDelay(task,
-                    0,
-                    randomDelay(1, 14),
-                    TimeUnit.MINUTES);
+                    properties.getInitialdelay(),
+                    randomDelay(1, properties.getInterval()),
+                    properties.getTimeUnit());
         });
 
     }

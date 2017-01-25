@@ -20,17 +20,14 @@ public class Task {
     }
 
     public static List<Runnable> getTasks() {
-        final Runnable herokuTask = () -> Pinger.ping(getUrlName(properties.getUrlOne()), getFullUrl(properties.getUrlOne()));
-        final Runnable openshiftTask = () -> Pinger.ping(getUrlName(properties.getUrlTwo()), getFullUrl(properties.getUrlTwo()));
         final List<Runnable> runnables = new ArrayList<>();
-        runnables.add(herokuTask);
-        runnables.add(openshiftTask);
+
+        properties.getUrlList().forEach(url -> {
+            Runnable task = () -> Pinger.ping(getUrlName(url), url);
+            runnables.add(task);
+        });
 
         return runnables;
-    }
-
-    private static String getFullUrl(String url) {
-        return "http://"+url+"/";
     }
 
     private static String getUrlName(String url) {
